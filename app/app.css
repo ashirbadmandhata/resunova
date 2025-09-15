@@ -151,23 +151,11 @@ form {
   }
 }
 
-@keyframes gradient-move {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
+/* -------------------
+   Splash Screen Styles
+------------------- */
 
-.animate-gradient {
-  animation: gradient-move 6s linear infinite;
-}
-
-/* Futuristic gradient shimmer */
+/* Gradient shimmer for splash text */
 @keyframes splash-gradient-move {
   0% {
     background-position: 0% 50%;
@@ -185,13 +173,51 @@ form {
   animation: splash-gradient-move 6s linear infinite;
 }
 
-/* Fade out splash */
+/* Fade out effect */
 @keyframes splash-fade-out {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; visibility: hidden; }
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .splash-fadeout {
   animation: splash-fade-out 2.5s ease forwards;
+}
+
+/* Splash text (independent of global h1) */
+.splash-title {
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(
+    270deg,
+    #f0f4ff,
+    #4957eb,
+    #fa7185cc,
+    #4957eb,
+    #f0f4ff
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: splash-gradient-move 6s linear infinite;
+}
+
+.splash-subtitle {
+  color: #d1d5db; /* gray-300 */
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .splash-subtitle {
+    font-size: 1.125rem; /* md:text-lg */
+  }
 }
