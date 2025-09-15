@@ -10,7 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { usePuterStore } from "./lib/puter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -27,12 +27,14 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   const { init } = usePuterStore();
+  const [showSplash, setShowSplash] = useState(true);
 
   useEffect(() => {
-    init()
+    init();
+    const timer = setTimeout(() => setShowSplash(false), 2500);
+    return () => clearTimeout(timer);
   }, [init]);
 
-  
   return (
     <html lang="en">
       <head>
@@ -41,8 +43,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="relative bg-black text-white">
         <script src="https://js.puter.com/v2/"></script>
+
+        {/* Splash Screen */}
+        {showSplash && (
+          <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-br from-[#0f0f1f] via-[#1a1a3c] to-[#0f0f1f] splash-fadeout">
+            <h1
+              className="text-4xl md:text-6xl font-extrabold 
+              bg-gradient-to-r from-[#f0f4ff] via-[#4957eb] to-[#fa7185cc]
+              bg-clip-text text-transparent splash-gradient"
+            >
+              RESUNOVA
+            </h1>
+            <p className="mt-3 text-sm md:text-lg text-gray-300 tracking-widest uppercase">
+              Developed by <span className="text-[#fa7185cc]">Er. Ashirbad</span>
+            </p>
+          </div>
+        )}
+
+        {/* Main App */}
         {children}
         <ScrollRestoration />
         <Scripts />

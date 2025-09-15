@@ -150,3 +150,48 @@ form {
     opacity: 1;
   }
 }
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient-move 6s linear infinite;
+}
+
+/* Futuristic gradient shimmer */
+@keyframes splash-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.splash-gradient {
+  background-size: 200% 200%;
+  animation: splash-gradient-move 6s linear infinite;
+}
+
+/* Fade out splash */
+@keyframes splash-fade-out {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+.splash-fadeout {
+  animation: splash-fade-out 2.5s ease forwards;
+}
