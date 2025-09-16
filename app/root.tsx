@@ -57,7 +57,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
               RESUNOVA
             </h1>
             <p className="mt-3 text-sm md:text-lg text-gray-300 tracking-widest uppercase">
-              Developed by <span className="text-[#fa7185cc]">Er. Ashirbad</span>
+              Developed by <span className="text-[#fa7185cc]">Honey, Jyoti, Runi, Soumya</span>
             </p>
           </div>
         )}
